@@ -10,15 +10,17 @@ export const authConfig = {
   ],
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
-      let isLoggedIn = !!auth?.user;
-      let isOnDashboard = nextUrl.pathname.startsWith('/protected');
-
-      if (isOnDashboard) {
-        if (isLoggedIn) return true;
-        return false; // Redirect unauthenticated users to login page
-      } else if (isLoggedIn) {
-        return Response.redirect(new URL('/protected', nextUrl));
-      }
+      console.log('auth', auth)
+      // let isLoggedIn = true;
+      // // let isLoggedIn = !!auth?.user;
+      // let isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
+      // console.log('isOnDashboard', isOnDashboard)
+      // if (isOnDashboard) {
+      //   if (isLoggedIn) return true;
+      //   return false; // Redirect unauthenticated users to login page
+      // } else if (isLoggedIn) {
+      //   return Response.redirect(new URL('/dashboard', nextUrl));
+      // }
 
       return true;
     },
