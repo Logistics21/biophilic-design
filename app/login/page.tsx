@@ -16,11 +16,11 @@ export default function Login() {
         <Form
           action={async (formData: FormData) => {
             'use server';
-            await signIn('credentials', {
-              redirectTo: '/dashboard',
-              email: formData.get('email') as string,
-              password: formData.get('password') as string,
-            });
+          //   await signIn('credentials', {
+          //     redirectTo: '/dashboard',
+          //     email: formData.get('email') as string,
+          //     password: formData.get('password') as string,
+          //   });
           }}
         >
           <SubmitButton>Sign in</SubmitButton>
