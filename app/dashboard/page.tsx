@@ -1,4 +1,4 @@
-import { auth, signOut } from 'app/auth';
+// import { auth, signOut } from 'app/auth';
 import Link from 'next/link'
 
 export default async function DashboardPage() {
