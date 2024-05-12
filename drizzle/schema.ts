@@ -1,3 +1,4 @@
+import { relations } from 'drizzle-orm';
 import {
   pgTable,
   serial,
@@ -42,4 +43,12 @@ export const ReportsTable = pgTable(
     viewsVistasScore: integer('views_vistas_score').notNull(),
     waterScore: integer('water_score').notNull(),
   }
-)
+);
+
+export const ReportsRelations = relations(ReportsTable, ({ one }) => ({
+  user: one(UsersTable, { fields: [ReportsTable.userId], references: [UsersTable.id] })
+}));
+
+export const UsersRelations = relations(UsersTable, ({ many }) => ({
+  ReportsTable: many(ReportsTable),
+}));
