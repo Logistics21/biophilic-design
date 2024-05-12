@@ -4,7 +4,7 @@ import { drizzle } from 'drizzle-orm/postgres-js';
 import { eq } from 'drizzle-orm';
 import postgres from 'postgres';
 import { genSaltSync, hashSync } from 'bcrypt-ts';
-import { UsersTable } from 'drizzle/schema';
+import { UsersTable, ReportsTable } from 'drizzle/schema';
 
 // Optionally, if not using email/pass login, you can
 // use the Drizzle adapter for Auth.js / NextAuth
@@ -15,6 +15,18 @@ interface NewUserFormData {
   password: string;
   firstName: string;
   lastName: string;
+}
+interface NewReportFormData {
+  userId: number;
+  airScore: number;
+  animalsScore: number;
+  fireScore: number;
+  insideOutsideScore: number;
+  naturaLightScore: number;
+  naturalMaterialsScore: number;
+  plantsScore: number;
+  viewsVistasScore: number;
+  waterScore: number;
 }
 
 const client = postgres(`${process.env.POSTGRES_URL!}`, { max: 1 });
@@ -42,6 +54,14 @@ export async function createUser(newUserFormData: NewUserFormData) {
       firstName,
       lastName,
     });
+  } catch (error) {
+    debugger
+  }
+}
+
+export async function createReport(newReportFormData: NewReportFormData) {
+  try {
+    return await db.insert(ReportsTable).values(newReportFormData);
   } catch (error) {
     debugger
   }
