@@ -19,6 +19,7 @@ interface NewUserFormData {
 }
 interface NewReportFormData {
   clerkUserId: string;
+  reportName: string;
   airScore: number;
   animalsScore: number;
   fireScore: number;
@@ -65,6 +66,10 @@ export async function createUser(newUserFormData: NewUserFormData) {
   } catch (error) {
     debugger
   }
+}
+
+export async function getReports(userClerkId: string) {
+  return await db.select().from(ReportsTable).where(eq(ReportsTable.clerkUserId, userClerkId))
 }
 
 export async function createReport(newReportFormData: NewReportFormData) {

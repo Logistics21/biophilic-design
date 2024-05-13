@@ -12,6 +12,21 @@ export function CreateReportForm({
       >
         <div>
           <label
+            htmlFor="reportName"
+            className="block text-xs text-gray-600 uppercase"
+            >
+              Enter the name of the room for this report
+          </label>
+          <input
+            type="text"
+            id="reportName"
+            name="reportName"
+            required
+            className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+          />
+        </div>
+        <div>
+          <label
             htmlFor="airScore"
             className="block text-xs text-gray-600 uppercase"
           >

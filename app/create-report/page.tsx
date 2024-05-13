@@ -2,20 +2,33 @@ import { CreateReportForm } from "./create-report-form";
 import { redirect } from "next/navigation";
 import { createReport } from "app/db";
 import { SubmitButton } from "app/submit-button";
+import { currentUser } from "@clerk/nextjs/server";
 
 export default function CreateReportPage() {
-  async function register(formData: FormData) {
+  async function submitReport(formData: FormData) {
     'use server';
 
-    const newReport = {
-      email: formData.get('email') as string,
-      password: formData.get('password') as string,
-      firstName: formData.get('firstName') as string,
-      lastName:  formData.get('lastName') as string
+    const user = await currentUser();
+    console.log(user)
+    console.log(formData)
+    if (user) {
+      const newReport = {
+        clerkUserId: user.id,
+        reportName: formData.get('reportName') as string,
+        airScore: parseInt(formData.get('airScore') as string, 10),
+        // animalsScore: parseInt(formData.get('animalsScore') as string, 10),
+        // fireScore: parseInt(formData.get('fireScore') as string, 10),
+        // insideOutsideScore: parseInt(formData.get('insideOutsideScore') as string, 10),
+        // naturaLightScore: parseInt(formData.get('naturaLightScore') as string, 10),
+        // naturalMaterialsScore: parseInt(formData.get('naturalMaterialsScore') as string, 10),
+        // plantsScore: parseInt(formData.get('plantsScore') as string, 10),
+        // viewsVistasScore: parseInt(formData.get('viewsVistasScore') as string, 10),
+        // waterScore: parseInt(formData.get('waterScore') as string, 10),
+      }
+      
+      await createReport(newReport);
+      redirect('/dashboard');
     }
-    
-    await createReport(newReport);
-    redirect('/login');
   }
 
   return (
@@ -29,7 +42,7 @@ export default function CreateReportPage() {
             The score goes from 0 (none), 1 (weak), 2 (moderate), 3 (strong)
           </p>
         </div>
-        <CreateReportForm action={register}>
+        <CreateReportForm action={submitReport}>
           <SubmitButton>Get Your Results</SubmitButton>
         </CreateReportForm>
       </div>
