@@ -43,26 +43,7 @@ export default async function DashboardPage() {
           >
             Create New Report
           </Link>
-        <SignOut />
       </div>
     </div>
-  );
-}
-
-function SignOut() {
-  return (
-    <form
-      // action={async () => {
-      //   'use server';
-      //   await signOut();
-      // }}
-    >
-      <button
-        className="text-white bg-gray-700 focus:bg-gray-800 rounded-lg px-5 py-2.5 hover:text-stone-200 transition-all"
-        type="submit"
-        >
-          Sign out
-        </button>
-    </form>
   );
 }
