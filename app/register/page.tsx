@@ -3,26 +3,54 @@ import { Form } from 'app/form';
 import { redirect } from 'next/navigation';
 import { createUser, getUser } from 'app/db';
 import { SubmitButton } from 'app/submit-button';
+import { clerkClient } from '@clerk/nextjs/server';
 
-export default function Login() {
+export default function Register() {
   async function register(formData: FormData) {
     'use server';
 
-    const newUser = {
-      email: formData.get('email') as string,
-      password: formData.get('password') as string,
-      firstName: formData.get('firstName') as string,
-      lastName:  formData.get('lastName') as string
-    }
-    
-    const user = await getUser(newUser.email)
+      const emailAddress = formData.get('email') as string;
+      const password = formData.get('password') as string;
+      const firstName = formData.get('firstName') as string;
+      const lastName =  formData.get('lastName') as string;
 
-    if (user.length > 0) {
-      return 'User already exists'; // TODO: Handle errors with useFormStatus
-    } else {
-      await createUser(newUser);
-      redirect('/login');
+    try {
+      // const clerkUser = await clerkClient.users.createUser(newUser)
+      // const clerkUser = await clerkClient.users.createUser({
+      //   emailAddress: ['tom3@test.com'],
+      //   password: 'password',
+      //   firstName: 'tom3',
+      //   lastName: 'test',
+      // })
+      const clerkUser = await clerkClient.users.createUser({
+        emailAddress: [formData.get('email')] as string[],
+        password,
+        firstName,
+        lastName,
+      })
+
+      await createUser({
+        email: emailAddress,
+        password,
+        firstName,
+        lastName,
+        clerkId: clerkUser.id
+      })
+      // console.log(existingEmailAddress);
+      // const existingEmailAddress = await clerkClient.emailAddresses.getEmailAddress(emailAddress);
+      // console.log(existingEmailAddress);
+
+    } catch (error: any) {
+      console.log(error.errors[0].code);
     }
+    // const user = await getUser(newUser.email)
+
+    // if (user.length > 0) {
+    //   return 'User already exists'; // TODO: Handle errors with useFormStatus
+    // } else {
+    //   await createUser(newUser);
+    //   redirect('/login');
+    // }
   }
 
   return (

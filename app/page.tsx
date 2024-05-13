@@ -1,6 +1,16 @@
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import { auth, currentUser, clerkClient } from '@clerk/nextjs/server';
+
 import Link from 'next/link';
 
-export default function Page() {
+export default async function Page() {
+  // console.log(clerkClient.users.createUser)
+  // const user = await currentUser();
+  // const authObj = auth();
+
+  // console.log(user)
+  // console.log(authObj)
+
   return (
     <div className="flex h-screen bg-black">
       <div className="w-screen h-screen flex flex-col justify-center items-center">
@@ -17,13 +27,18 @@ export default function Page() {
           >
             Get Your Report
           </Link>
-          <Link
-            href="/register"
-            className="text-white bg-green-700 focus:bg-green-800 rounded-lg px-5 py-2.5 underline hover:text-stone-200 transition-all"
-            // className="text-stone-400 underline hover:text-stone-200 transition-all"
-          >
-            Create Your Account
-          </Link>
+          <SignedOut>
+            <Link
+              href="/register"
+              className="text-white bg-green-700 focus:bg-green-800 rounded-lg px-5 py-2.5 underline hover:text-stone-200 transition-all"
+              // className="text-stone-400 underline hover:text-stone-200 transition-all"
+            >
+              Create Your Account
+            </Link>
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
           <Link
             href="/about"
             className="text-white bg-green-700 focus:bg-green-800 rounded-lg px-5 py-2.5 underline hover:text-stone-200 transition-all"
