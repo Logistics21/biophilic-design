@@ -21,24 +21,18 @@ interface NewReportFormData {
   clerkUserId: string;
   reportName: string;
   airScore: number;
-  animalsScore: number;
-  fireScore: number;
-  insideOutsideScore: number;
-  naturaLightScore: number;
-  naturalMaterialsScore: number;
-  plantsScore: number;
-  viewsVistasScore: number;
-  waterScore: number;
+  // animalsScore: number;
+  // fireScore: number;
+  // insideOutsideScore: number;
+  // naturaLightScore: number;
+  // naturalMaterialsScore: number;
+  // plantsScore: number;
+  // viewsVistasScore: number;
+  // waterScore: number;
 }
 
 const client = postgres(`${process.env.POSTGRES_URL!}`, { max: 1 });
 const db = drizzle(client, { schema })
-
-// const users = pgTable('users', {
-//   id: serial('id').primaryKey(),
-//   email: varchar('email', { length: 64 }),
-//   password: varchar('password', { length: 64 }),
-// });
 
 export async function getUser(email: string) {
   return await db.select().from(UsersTable).where(eq(UsersTable.emailAddress, email));

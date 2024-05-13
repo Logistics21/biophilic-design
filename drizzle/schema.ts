@@ -35,15 +35,16 @@ export const ReportsTable = pgTable(
       .notNull()
       .references(() => UsersTable.clerkId)
       .unique(),
+    reportName: text('report_name').notNull(),
     airScore: integer('air_score').notNull(),
-    animalsScore: integer('animals_score').notNull(),
-    fireScore: integer('fire_score').notNull(),
-    insideOutsideScore: integer('inside_outside_score').notNull(),
-    naturaLightScore: integer('natural_light_score').notNull(),
-    naturalMaterialsScore: integer('natural_materials_score').notNull(),
-    plantsScore: integer('plants_score').notNull(),
-    viewsVistasScore: integer('views_vistas_score').notNull(),
-    waterScore: integer('water_score').notNull(),
+    // animalsScore: integer('animals_score').notNull(),
+    // fireScore: integer('fire_score').notNull(),
+    // insideOutsideScore: integer('inside_outside_score').notNull(),
+    // naturaLightScore: integer('natural_light_score').notNull(),
+    // naturalMaterialsScore: integer('natural_materials_score').notNull(),
+    // plantsScore: integer('plants_score').notNull(),
+    // viewsVistasScore: integer('views_vistas_score').notNull(),
+    // waterScore: integer('water_score').notNull(),
   }
 );
 

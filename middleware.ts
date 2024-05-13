@@ -1,17 +1,10 @@
-// export { auth as middleware } from "@/auth"
-// import NextAuth from 'next-auth';
-// import { authConfig } from 'app/auth.config';
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-// export default NextAuth(authConfig).auth;
+const isProtectedRoute = createRouteMatcher(["/dashboard(.*)"]);
 
-// export const config = {
-//   // https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
-//   matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
-// };
-
-import { clerkMiddleware } from "@clerk/nextjs/server";
-
-export default clerkMiddleware();
+export default clerkMiddleware((auth, request) => {
+    if (isProtectedRoute(request)) auth().protect();
+});
 
 export const config = {
   matcher: ["/((?!.+.[w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
