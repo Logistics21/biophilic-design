@@ -29,7 +29,7 @@ export default async function Page() {
           </Link>
           <SignedOut>
             <Link
-              href="/register"
+              href="/sign-up"
               className="text-white bg-green-700 focus:bg-green-800 rounded-lg px-5 py-2.5 underline hover:text-stone-200 transition-all"
               // className="text-stone-400 underline hover:text-stone-200 transition-all"
             >
