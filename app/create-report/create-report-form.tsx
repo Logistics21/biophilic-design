@@ -25,7 +25,7 @@ export function CreateReportForm({
             className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
           />
         </div>
-        <div>
+        <div style={{ paddingTop: '20px' }}>
           <label
             htmlFor="airScore"
             className="block text-xs text-gray-600 uppercase"
@@ -38,10 +38,10 @@ export function CreateReportForm({
             name="airScore"
             min={0}
             max={3}
+            defaultValue={0}
             list="values"
             style={{
               width: '300px',
-              // margin: 0,
             }}
           />
             <datalist id="values" style={{
@@ -57,7 +57,7 @@ export function CreateReportForm({
             <option value="3" label="3"></option>
           </datalist>
         </div>
-        <div>
+        <div style={{ paddingTop: '20px' }}>
           <label
             htmlFor="animalsScore"
             className="block text-xs text-gray-600 uppercase"
@@ -70,10 +70,10 @@ export function CreateReportForm({
             name="animalsScore"
             min={0}
             max={3}
+            defaultValue={0}
             list="values"
             style={{
               width: '300px',
-              // margin: 0,
             }}
           />
             <datalist id="values" style={{
@@ -89,7 +89,7 @@ export function CreateReportForm({
             <option value="3" label="3"></option>
           </datalist>
         </div>
-        <div>
+        <div style={{ paddingTop: '20px' }}>
           <label
             htmlFor="fireScore"
             className="block text-xs text-gray-600 uppercase"
@@ -102,10 +102,10 @@ export function CreateReportForm({
             name="fireScore"
             min={0}
             max={3}
+            defaultValue={0}
             list="values"
             style={{
               width: '300px',
-              // margin: 0,
             }}
           />
             <datalist id="values" style={{
@@ -121,7 +121,7 @@ export function CreateReportForm({
             <option value="3" label="3"></option>
           </datalist>
         </div>
-        <div>
+        <div style={{ paddingTop: '20px' }}>
           <label
             htmlFor="insideOutsideScore"
             className="block text-xs text-gray-600 uppercase"
@@ -134,10 +134,10 @@ export function CreateReportForm({
             name="insideOutsideScore"
             min={0}
             max={3}
+            defaultValue={0}
             list="values"
             style={{
               width: '300px',
-              // margin: 0,
             }}
           />
             <datalist id="values" style={{
@@ -153,7 +153,7 @@ export function CreateReportForm({
             <option value="3" label="3"></option>
           </datalist>
         </div>
-        <div>
+        <div style={{ paddingTop: '20px' }}>
           <label
             htmlFor="naturaLightScore"
             className="block text-xs text-gray-600 uppercase"
@@ -166,10 +166,10 @@ export function CreateReportForm({
             name="naturaLightScore"
             min={0}
             max={3}
+            defaultValue={0}
             list="values"
             style={{
               width: '300px',
-              // margin: 0,
             }}
           />
             <datalist id="values" style={{
@@ -185,7 +185,7 @@ export function CreateReportForm({
             <option value="3" label="3"></option>
           </datalist>
         </div>
-        <div>
+        <div style={{ paddingTop: '20px' }}>
           <label
             htmlFor="naturalMaterialsScore"
             className="block text-xs text-gray-600 uppercase"
@@ -198,10 +198,10 @@ export function CreateReportForm({
             name="naturalMaterialsScore"
             min={0}
             max={3}
+            defaultValue={0}
             list="values"
             style={{
               width: '300px',
-              // margin: 0,
             }}
           />
             <datalist id="values" style={{
@@ -217,7 +217,7 @@ export function CreateReportForm({
             <option value="3" label="3"></option>
           </datalist>
         </div>
-        <div>
+        <div style={{ paddingTop: '20px' }}>
           <label
             htmlFor="plantsScore"
             className="block text-xs text-gray-600 uppercase"
@@ -230,10 +230,10 @@ export function CreateReportForm({
             name="plantsScore"
             min={0}
             max={3}
+            defaultValue={0}
             list="values"
             style={{
               width: '300px',
-              // margin: 0,
             }}
           />
             <datalist id="values" style={{
@@ -249,7 +249,7 @@ export function CreateReportForm({
             <option value="3" label="3"></option>
           </datalist>
         </div>
-        <div>
+        <div style={{ paddingTop: '20px' }}>
           <label
             htmlFor="viewsVistasScore"
             className="block text-xs text-gray-600 uppercase"
@@ -262,10 +262,10 @@ export function CreateReportForm({
             name="viewsVistasScore"
             min={0}
             max={3}
+            defaultValue={0}
             list="values"
             style={{
               width: '300px',
-              // margin: 0,
             }}
           />
             <datalist id="values" style={{
@@ -281,7 +281,7 @@ export function CreateReportForm({
             <option value="3" label="3"></option>
           </datalist>
         </div>
-        <div>
+        <div style={{ paddingTop: '20px' }}>
           <label
             htmlFor="waterScore"
             className="block text-xs text-gray-600 uppercase"
@@ -298,7 +298,6 @@ export function CreateReportForm({
             list="values"
             style={{
               width: '300px',
-              // margin: 0,
             }}
           />
           <datalist id="values" style={{

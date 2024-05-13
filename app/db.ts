@@ -21,14 +21,14 @@ interface NewReportFormData {
   clerkUserId: string;
   reportName: string;
   airScore: number;
-  // animalsScore: number;
-  // fireScore: number;
-  // insideOutsideScore: number;
-  // naturaLightScore: number;
-  // naturalMaterialsScore: number;
-  // plantsScore: number;
-  // viewsVistasScore: number;
-  // waterScore: number;
+  animalsScore: number;
+  fireScore: number;
+  insideOutsideScore: number;
+  naturaLightScore: number;
+  naturalMaterialsScore: number;
+  plantsScore: number;
+  viewsVistasScore: number;
+  waterScore: number;
 }
 
 const client = postgres(`${process.env.POSTGRES_URL!}`, { max: 1 });
