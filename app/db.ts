@@ -58,7 +58,7 @@ export async function createUser(newUserFormData: NewUserFormData) {
       clerkId,
     });
   } catch (error) {
-    debugger
+    console.log(error)
   }
 }
 
@@ -70,6 +70,6 @@ export async function createReport(newReportFormData: NewReportFormData) {
   try {
     return await db.insert(ReportsTable).values(newReportFormData);
   } catch (error) {
-    debugger
+    console.log(error)
   }
 }

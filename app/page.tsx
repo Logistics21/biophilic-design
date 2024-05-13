@@ -36,9 +36,6 @@ export default async function Page() {
               Create Your Account
             </Link>
           </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
           <Link
             href="/about"
             className="text-white bg-green-700 focus:bg-green-800 rounded-lg px-5 py-2.5 underline hover:text-stone-200 transition-all"
