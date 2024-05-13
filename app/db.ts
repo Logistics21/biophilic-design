@@ -1,7 +1,7 @@
 import * as schema from 'drizzle/schema'
 import { drizzle } from 'drizzle-orm/postgres-js';
 // import { pgTable, serial, varchar } from 'drizzle-orm/pg-core';
-import { eq } from 'drizzle-orm';
+import { eq, and } from 'drizzle-orm';
 import postgres from 'postgres';
 import { genSaltSync, hashSync } from 'bcrypt-ts';
 import { UsersTable, ReportsTable } from 'drizzle/schema';
@@ -64,6 +64,15 @@ export async function createUser(newUserFormData: NewUserFormData) {
 
 export async function getReports(userClerkId: string) {
   return await db.select().from(ReportsTable).where(eq(ReportsTable.clerkUserId, userClerkId))
+}
+
+export async function getReport(userClerkId: string, reportId: number) {
+  return await db.select().from(ReportsTable).where(
+    and(
+      eq(ReportsTable.clerkUserId, userClerkId),
+      eq(ReportsTable.id, reportId)
+    )
+  )
 }
 
 export async function createReport(newReportFormData: NewReportFormData) {
