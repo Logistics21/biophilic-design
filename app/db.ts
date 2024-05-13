@@ -15,9 +15,10 @@ interface NewUserFormData {
   password: string;
   firstName: string;
   lastName: string;
+  clerkId: string;
 }
 interface NewReportFormData {
-  userId: number;
+  clerkUserId: string;
   airScore: number;
   animalsScore: number;
   fireScore: number;
@@ -39,20 +40,27 @@ const db = drizzle(client, { schema })
 // });
 
 export async function getUser(email: string) {
-  return await db.select().from(UsersTable).where(eq(UsersTable.email, email));
+  return await db.select().from(UsersTable).where(eq(UsersTable.emailAddress, email));
 }
 
 export async function createUser(newUserFormData: NewUserFormData) {
-  const { email, password, firstName, lastName } = newUserFormData;
+  const {
+    email,
+    password,
+    firstName,
+    lastName,
+    clerkId,
+  } = newUserFormData;
   try {
     let salt = genSaltSync(10);
     let hash = hashSync(password, salt);
   
     return await db.insert(UsersTable).values({
-      email,
+      emailAddress: email,
       password: hash,
       firstName,
       lastName,
+      clerkId,
     });
   } catch (error) {
     debugger

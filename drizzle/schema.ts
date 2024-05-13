@@ -15,13 +15,14 @@ export const UsersTable = pgTable(
     id: serial('id').primaryKey(),
     firstName: text('firstName').notNull(),
     lastName: text('lastName').notNull(),
-    email: text('email').notNull(),
+    emailAddress: text('email').notNull(),
     password: varchar('password', { length: 64 }),
     createdAt: timestamp('createdAt').defaultNow().notNull(),
+    clerkId: varchar('clerk_id').notNull().unique(),
   },
   (users) => {
     return {
-      uniqueIdx: uniqueIndex('unique_idx').on(users.email),
+      uniqueIdx: uniqueIndex('unique_idx').on(users.emailAddress),
     };
   },
 );
@@ -30,9 +31,10 @@ export const ReportsTable = pgTable(
   'reports',
   {
     id: serial('id').primaryKey(),
-    userId: integer('user_id')
+    clerkUserId: varchar('clerk_user_id')
       .notNull()
-      .references(() => UsersTable.id),
+      .references(() => UsersTable.clerkId)
+      .unique(),
     airScore: integer('air_score').notNull(),
     animalsScore: integer('animals_score').notNull(),
     fireScore: integer('fire_score').notNull(),
@@ -46,7 +48,7 @@ export const ReportsTable = pgTable(
 );
 
 export const ReportsRelations = relations(ReportsTable, ({ one }) => ({
-  user: one(UsersTable, { fields: [ReportsTable.userId], references: [UsersTable.id] })
+  user: one(UsersTable, { fields: [ReportsTable.clerkUserId], references: [UsersTable.clerkId] })
 }));
 
 export const UsersRelations = relations(UsersTable, ({ many }) => ({
