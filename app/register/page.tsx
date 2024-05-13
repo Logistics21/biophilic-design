@@ -27,7 +27,7 @@ export default function Register() {
         password,
         firstName,
         lastName,
-      })
+      });
 
       await createUser({
         email: emailAddress,
@@ -35,7 +35,9 @@ export default function Register() {
         firstName,
         lastName,
         clerkId: clerkUser.id
-      })
+      });
+
+      redirect('/login');
       // console.log(existingEmailAddress);
       // const existingEmailAddress = await clerkClient.emailAddresses.getEmailAddress(emailAddress);
       // console.log(existingEmailAddress);
