@@ -17,7 +17,7 @@ export default async function DashboardPage() {
   return (
     <div className="flex h-screen bg-black">
       <div className="w-screen h-screen flex flex-col space-y-5 justify-center items-center text-white">
-        <h1 className="text-stone-500">Welcome {firstName}</h1>
+        <h1 className="text-white">Welcome {firstName}</h1>
         <h3>Spaces you&apos;ve evaluated</h3>
         {reports.length === 0 ? (
           <div>
@@ -28,9 +28,16 @@ export default async function DashboardPage() {
           {reports.map((report) => {
             return (
               <li key={report.id}>
-                <p>
+                <Link
+                  href={{
+                    pathname: `/view-report/${report.id}`,
+                    query: report
+                  }}
+                  className="text-white px-5 py-2.5 underline hover:text-green-700 transition-all"
+                >
                   {report.reportName}
-                </p>
+              </Link>
+
               </li>
             )
           })}
@@ -39,7 +46,6 @@ export default async function DashboardPage() {
         <Link
             href="/create-report"
             className="text-white bg-green-700 focus:bg-green-800 rounded-lg px-5 py-2.5 hover:text-stone-200 transition-all"
-            // className="text-stone-400 underline hover:text-stone-200 transition-all"
           >
             Create New Report
           </Link>

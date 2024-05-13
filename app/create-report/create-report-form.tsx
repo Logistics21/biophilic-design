@@ -1,10 +1,19 @@
-export function CreateReportForm({
+import { currentUser } from "@clerk/nextjs/dist/types/server";
+
+export async function CreateReportForm({
     action,
     children,
+    disabled = false,
+    initialValues
   }: {
     action: any;
     children: React.ReactNode;
+    disabled: boolean;
+    initialValues: {
+      [key: string]: string
+    } | undefined;
   }) {
+    const defaultValue = 0;
     return (
       <form
         action={action}
@@ -22,6 +31,8 @@ export function CreateReportForm({
             id="reportName"
             name="reportName"
             required
+            defaultValue={initialValues?.reportName}
+            disabled={disabled}
             className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
           />
         </div>
@@ -38,7 +49,9 @@ export function CreateReportForm({
             name="airScore"
             min={0}
             max={3}
-            defaultValue={0}
+            defaultValue={initialValues?.airScore || 0}
+            required
+            disabled={disabled}
             list="values"
             style={{
               width: '300px',
@@ -70,7 +83,9 @@ export function CreateReportForm({
             name="animalsScore"
             min={0}
             max={3}
-            defaultValue={0}
+            defaultValue={initialValues?.animalsScore || 0}
+            required
+            disabled={disabled}
             list="values"
             style={{
               width: '300px',
@@ -102,7 +117,9 @@ export function CreateReportForm({
             name="fireScore"
             min={0}
             max={3}
-            defaultValue={0}
+            defaultValue={initialValues?.fireScore || 0}
+            required
+            disabled={disabled}
             list="values"
             style={{
               width: '300px',
@@ -134,7 +151,9 @@ export function CreateReportForm({
             name="insideOutsideScore"
             min={0}
             max={3}
-            defaultValue={0}
+            defaultValue={initialValues?.insideOutsideScore || 0}
+            required
+            disabled={disabled}
             list="values"
             style={{
               width: '300px',
@@ -166,7 +185,9 @@ export function CreateReportForm({
             name="naturaLightScore"
             min={0}
             max={3}
-            defaultValue={0}
+            defaultValue={initialValues?.naturaLightScore || 0}
+            required
+            disabled={disabled}
             list="values"
             style={{
               width: '300px',
@@ -198,7 +219,9 @@ export function CreateReportForm({
             name="naturalMaterialsScore"
             min={0}
             max={3}
-            defaultValue={0}
+            defaultValue={initialValues?.naturalMaterialsScore || 0}
+            required
+            disabled={disabled}
             list="values"
             style={{
               width: '300px',
@@ -230,7 +253,9 @@ export function CreateReportForm({
             name="plantsScore"
             min={0}
             max={3}
-            defaultValue={0}
+            defaultValue={initialValues?.plantsScore || 0}
+            required
+            disabled={disabled}
             list="values"
             style={{
               width: '300px',
@@ -262,7 +287,9 @@ export function CreateReportForm({
             name="viewsVistasScore"
             min={0}
             max={3}
-            defaultValue={0}
+            defaultValue={initialValues?.viewsVistasScore || 0}
+            required
+            disabled={disabled}
             list="values"
             style={{
               width: '300px',
@@ -293,7 +320,9 @@ export function CreateReportForm({
             id="waterScore"
             name="waterScore"
             min={0}
-            defaultValue={0}
+            defaultValue={initialValues?.waterScore || 0}
+            required
+            disabled={disabled}
             max={3}
             list="values"
             style={{

@@ -1,13 +1,12 @@
-import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
-import { auth, currentUser, clerkClient } from '@clerk/nextjs/server';
+import { SignedOut } from '@clerk/nextjs';
+// import { auth, currentUser } from '@clerk/nextjs/server';
 
 import Link from 'next/link';
 
 export default async function Page() {
-  // console.log(clerkClient.users.createUser)
   // const user = await currentUser();
   // const authObj = auth();
-
+  
   // console.log(user)
   // console.log(authObj)
 
@@ -23,7 +22,6 @@ export default async function Page() {
           <Link
             href="/dashboard"
             className="text-white bg-green-700 focus:bg-green-800 rounded-lg px-5 py-2.5 underline hover:text-stone-200 transition-all"
-            // className="text-stone-400 underline hover:text-stone-200 transition-all"
           >
             Get Your Report
           </Link>
@@ -31,7 +29,6 @@ export default async function Page() {
             <Link
               href="/sign-up"
               className="text-white bg-green-700 focus:bg-green-800 rounded-lg px-5 py-2.5 underline hover:text-stone-200 transition-all"
-              // className="text-stone-400 underline hover:text-stone-200 transition-all"
             >
               Create Your Account
             </Link>
@@ -39,7 +36,6 @@ export default async function Page() {
           <Link
             href="/about"
             className="text-white bg-green-700 focus:bg-green-800 rounded-lg px-5 py-2.5 underline hover:text-stone-200 transition-all"
-            // className="text-stone-400 underline hover:text-stone-200 transition-all"
           >
             Learn More
           </Link>
