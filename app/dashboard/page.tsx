@@ -36,8 +36,7 @@ export default async function DashboardPage() {
                   className="text-white px-5 py-2.5 underline hover:text-green-700 transition-all"
                 >
                   {report.reportName}
-              </Link>
-
+                </Link>
               </li>
             )
           })}

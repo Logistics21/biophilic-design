@@ -1,3 +1,55 @@
+export const formPageOneInputs = {
+    title: 'Direct Natural Features',
+    subtitle: 'This element includes direct access or views to actual nature in the built environment (not abstractions, images or representations).',
+    fields: [
+        {   
+            formFieldId: 'airScore',
+            fieldName: 'Air',
+            fieldText: 'Natural ventilation (e.g., direct access to operable windows or exterior doors, inside/outside fresh air connections).',
+        },
+        {
+            formFieldId: 'animalsScore',
+            fieldName: 'Animal',
+            fieldText: 'Actual animals in any form (alive or preserved) in the interior (e.g., fish in a fish tank).',
+        },
+        {
+            formFieldId: 'fireScore',
+            fieldName: 'Fire',
+            fieldText: 'Controlled access to fire, including color, warmth & movement (e.g., fireplace).',
+        },
+        {
+            formFieldId: 'insideOutsideScore',
+            fieldName: 'Inside-Outside',
+            fieldText: 'Interior spaces that offer direct physical connection to the outside environment (e.g. open sliding glass doors).',
+        },
+        {
+            formFieldId: 'naturaLightScore',
+            fieldName: 'Natural light',
+            fieldText: 'Sunlight access that can be modulated to reduce glare or manipulated to create stimulating, dynamic and/or sculptural forms (e.g., window, clearstory, skylight, tinted glazing, light shaft).',
+        },
+        {
+            formFieldId: 'naturalMaterialsScore',
+            fieldName: 'Natural materials',
+            fieldText: 'Materials recognizably coming from nature (e.g., wood, stone, cork).',
+        },
+        {
+            formFieldId: 'plantsScore',
+            fieldName: 'Plants',
+            fieldText: 'Actual plants in any form, alive or preserved (e.g., potted plants or dried leaves in a shadow box).',
+        },
+        {
+            formFieldId: 'viewsVistasScore',
+            fieldName: 'Views & Vistas',
+            fieldText: 'Exterior views of natural features that connect the interior to the outside environment (e.g., views to locally appropriate landscapes, window view of Central Park).',
+        },
+        {
+            formFieldId: 'waterScore',
+            fieldName: 'Water',
+            fieldText: 'Water access or view (e.g., water fountain, sink, or fish tank).',
+        },
+    ],
+}
+
 export const formPageTwoInputs = {
     title: 'Indirect Natural Features',
     subtitle: 'This element includes indirect access to nature through the use of nature representations, simulations and properties derived from natural features and processes.',
