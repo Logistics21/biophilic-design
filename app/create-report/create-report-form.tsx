@@ -1,5 +1,5 @@
 "use client"
-import { currentUser } from "@clerk/nextjs/dist/types/server";
+import { currentUser } from "@clerk/nextjs/server";
 import { FormPageOne } from "./_components/form-page-1";
 import { FormPageTwo } from "./_components/form-page-2";
 import { FormPageThree } from "./_components/form-page-3";
