@@ -1,0 +1,180 @@
+{
+  "id": "b59195ac-1345-477f-9af1-30c04b263326",
+  "prevId": "d7c31e9e-be1d-4102-aa24-611bf1fedbc0",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "reports": {
+      "name": "reports",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "clerk_user_id": {
+          "name": "clerk_user_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "report_name": {
+          "name": "report_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "air_score": {
+          "name": "air_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "animals_score": {
+          "name": "animals_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fire_score": {
+          "name": "fire_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "inside_outside_score": {
+          "name": "inside_outside_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "natural_light_score": {
+          "name": "natural_light_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "natural_materials_score": {
+          "name": "natural_materials_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "plants_score": {
+          "name": "plants_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "views_vistas_score": {
+          "name": "views_vistas_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "water_score": {
+          "name": "water_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "reports_clerk_user_id_users_clerk_id_fk": {
+          "name": "reports_clerk_user_id_users_clerk_id_fk",
+          "tableFrom": "reports",
+          "tableTo": "users",
+          "columnsFrom": [
+            "clerk_user_id"
+          ],
+          "columnsTo": [
+            "clerk_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "users": {
+      "name": "users",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "firstName": {
+          "name": "firstName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "lastName": {
+          "name": "lastName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "clerk_id": {
+          "name": "clerk_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "unique_idx": {
+          "name": "unique_idx",
+          "columns": [
+            "email"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "users_clerk_id_unique": {
+          "name": "users_clerk_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "clerk_id"
+          ]
+        }
+      }
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
