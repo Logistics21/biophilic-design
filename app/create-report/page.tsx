@@ -9,8 +9,7 @@ export default function CreateReportPage() {
     'use server';
 
     const user = await currentUser();
-    console.log(user)
-    console.log(formData)
+
     if (user) {
       const newReport = {
         clerkUserId: user.id,
@@ -25,7 +24,7 @@ export default function CreateReportPage() {
         viewsVistasScore: parseInt(formData.get('viewsVistasScore') as string, 10),
         waterScore: parseInt(formData.get('waterScore') as string, 10),
       }
-      
+
       await createReport(newReport);
       redirect('/dashboard');
     }
@@ -42,7 +41,11 @@ export default function CreateReportPage() {
             The score goes from 0 (none), 1 (weak), 2 (moderate), 3 (strong)
           </p>
         </div>
-        <CreateReportForm action={submitReport}>
+        <CreateReportForm
+          disabled={false}
+          action={submitReport}
+          initialValues={undefined}
+        >
           <SubmitButton>Get Your Results</SubmitButton>
         </CreateReportForm>
       </div>

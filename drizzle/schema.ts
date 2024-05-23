@@ -33,8 +33,7 @@ export const ReportsTable = pgTable(
     id: serial('id').primaryKey(),
     clerkUserId: varchar('clerk_user_id')
       .notNull()
-      .references(() => UsersTable.clerkId)
-      .unique(),
+      .references(() => UsersTable.clerkId),
     reportName: text('report_name').notNull(),
     airScore: integer('air_score').notNull(),
     animalsScore: integer('animals_score').notNull(),
