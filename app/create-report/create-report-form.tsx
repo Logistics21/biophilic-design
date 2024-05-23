@@ -1,10 +1,42 @@
+"use client"
+import { currentUser } from "@clerk/nextjs/dist/types/server";
+import { FormPageOne } from "./_components/form-page-1";
+import { FormPageTwo } from "./_components/form-page-2";
+import { FormPageThree } from "./_components/form-page-3";
+import { FunctionComponent, useState } from "react";
+
+type PageDictionaryType = {
+  [key: number]: React.ComponentType<any>;
+};
+
+const PageDictionary: PageDictionaryType = {
+  0: FormPageOne,
+  1: FormPageTwo,
+  2: FormPageThree
+}
 export function CreateReportForm({
-    action,
-    children,
-  }: {
-    action: any;
-    children: React.ReactNode;
-  }) {
+  action,
+  children,
+  disabled = false,
+  initialValues
+}: {
+  action: any;
+  children: React.ReactNode;
+  disabled: boolean;
+  initialValues: {
+    [key: string]: string
+  } | undefined;
+}) {
+    const [currentPageNumber, setCurrentPageNumber] = useState(0)
+    const handlePreviousPage = () => {
+      setCurrentPageNumber(currentPageNumber - 1)
+    }
+    const handleNextPage = () => {
+      setCurrentPageNumber(currentPageNumber + 1)
+    }
+    const defaultValue = 0;
+
+    const CurrentPage = PageDictionary[currentPageNumber]
     return (
       <form
         action={action}
@@ -25,296 +57,27 @@ export function CreateReportForm({
             className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
           />
         </div>
-        <div style={{ paddingTop: '20px' }}>
-          <label
-            htmlFor="airScore"
-            className="block text-xs text-gray-600 uppercase"
-          >
-            Air: Natural ventilation (e.g., direct access to operable windows or exterior doors, inside/outside fresh air connections).
-          </label>
-          <input
-            type="range"
-            id="airScore"
-            name="airScore"
-            min={0}
-            max={3}
-            defaultValue={0}
-            list="values"
-            style={{
-              width: '300px',
-            }}
-          />
-            <datalist id="values" style={{
-            display: 'flex',
-            // flexDirection: 'column',
-            justifyContent: 'space-between',
-            // writingMode: 'vertical-lr',
-            width: '300px'
-          }}>
-            <option value="0" label="0"></option>
-            <option value="1" label="1"></option>
-            <option value="2" label="2"></option>
-            <option value="3" label="3"></option>
-          </datalist>
-        </div>
-        <div style={{ paddingTop: '20px' }}>
-          <label
-            htmlFor="animalsScore"
-            className="block text-xs text-gray-600 uppercase"
-          >
-            Actual animals in any form (alive or preserved) in the interior (e.g., fish in a fish tank).
-          </label>
-          <input
-            type="range"
-            id="animalsScore"
-            name="animalsScore"
-            min={0}
-            max={3}
-            defaultValue={0}
-            list="values"
-            style={{
-              width: '300px',
-            }}
-          />
-            <datalist id="values" style={{
-            display: 'flex',
-            // flexDirection: 'column',
-            justifyContent: 'space-between',
-            // writingMode: 'vertical-lr',
-            width: '300px'
-          }}>
-            <option value="0" label="0"></option>
-            <option value="1" label="1"></option>
-            <option value="2" label="2"></option>
-            <option value="3" label="3"></option>
-          </datalist>
-        </div>
-        <div style={{ paddingTop: '20px' }}>
-          <label
-            htmlFor="fireScore"
-            className="block text-xs text-gray-600 uppercase"
-          >
-            Controlled access to fire, including color, warmth & movement (e.g., fireplace)
-          </label>
-          <input
-            type="range"
-            id="fireScore"
-            name="fireScore"
-            min={0}
-            max={3}
-            defaultValue={0}
-            list="values"
-            style={{
-              width: '300px',
-            }}
-          />
-            <datalist id="values" style={{
-            display: 'flex',
-            // flexDirection: 'column',
-            justifyContent: 'space-between',
-            // writingMode: 'vertical-lr',
-            width: '300px'
-          }}>
-            <option value="0" label="0"></option>
-            <option value="1" label="1"></option>
-            <option value="2" label="2"></option>
-            <option value="3" label="3"></option>
-          </datalist>
-        </div>
-        <div style={{ paddingTop: '20px' }}>
-          <label
-            htmlFor="insideOutsideScore"
-            className="block text-xs text-gray-600 uppercase"
-          >
-            Interior spaces that offer direct physical connection to the outside environment (e.g. open sliding glass doors)
-          </label>
-          <input
-            type="range"
-            id="insideOutsideScore"
-            name="insideOutsideScore"
-            min={0}
-            max={3}
-            defaultValue={0}
-            list="values"
-            style={{
-              width: '300px',
-            }}
-          />
-            <datalist id="values" style={{
-            display: 'flex',
-            // flexDirection: 'column',
-            justifyContent: 'space-between',
-            // writingMode: 'vertical-lr',
-            width: '300px'
-          }}>
-            <option value="0" label="0"></option>
-            <option value="1" label="1"></option>
-            <option value="2" label="2"></option>
-            <option value="3" label="3"></option>
-          </datalist>
-        </div>
-        <div style={{ paddingTop: '20px' }}>
-          <label
-            htmlFor="naturaLightScore"
-            className="block text-xs text-gray-600 uppercase"
-          >
-            Sunlight access that can be modulated to reduce glare or manipulated to create stimulating, dynamic and/or sculptural forms (e.g., window, clearstory, skylight, tinted glazing, light shaft)
-          </label>
-          <input
-            type="range"
-            id="naturaLightScore"
-            name="naturaLightScore"
-            min={0}
-            max={3}
-            defaultValue={0}
-            list="values"
-            style={{
-              width: '300px',
-            }}
-          />
-            <datalist id="values" style={{
-            display: 'flex',
-            // flexDirection: 'column',
-            justifyContent: 'space-between',
-            // writingMode: 'vertical-lr',
-            width: '300px'
-          }}>
-            <option value="0" label="0"></option>
-            <option value="1" label="1"></option>
-            <option value="2" label="2"></option>
-            <option value="3" label="3"></option>
-          </datalist>
-        </div>
-        <div style={{ paddingTop: '20px' }}>
-          <label
-            htmlFor="naturalMaterialsScore"
-            className="block text-xs text-gray-600 uppercase"
-          >
-            Materials recognizably coming from nature (e.g., wood, stone, cork).
-          </label>
-          <input
-            type="range"
-            id="naturalMaterialsScore"
-            name="naturalMaterialsScore"
-            min={0}
-            max={3}
-            defaultValue={0}
-            list="values"
-            style={{
-              width: '300px',
-            }}
-          />
-            <datalist id="values" style={{
-            display: 'flex',
-            // flexDirection: 'column',
-            justifyContent: 'space-between',
-            // writingMode: 'vertical-lr',
-            width: '300px'
-          }}>
-            <option value="0" label="0"></option>
-            <option value="1" label="1"></option>
-            <option value="2" label="2"></option>
-            <option value="3" label="3"></option>
-          </datalist>
-        </div>
-        <div style={{ paddingTop: '20px' }}>
-          <label
-            htmlFor="plantsScore"
-            className="block text-xs text-gray-600 uppercase"
-          >
-            Actual plants in any form, alive or preserved (e.g., potted plants or dried leaves in a shadow box).
-          </label>
-          <input
-            type="range"
-            id="plantsScore"
-            name="plantsScore"
-            min={0}
-            max={3}
-            defaultValue={0}
-            list="values"
-            style={{
-              width: '300px',
-            }}
-          />
-            <datalist id="values" style={{
-            display: 'flex',
-            // flexDirection: 'column',
-            justifyContent: 'space-between',
-            // writingMode: 'vertical-lr',
-            width: '300px'
-          }}>
-            <option value="0" label="0"></option>
-            <option value="1" label="1"></option>
-            <option value="2" label="2"></option>
-            <option value="3" label="3"></option>
-          </datalist>
-        </div>
-        <div style={{ paddingTop: '20px' }}>
-          <label
-            htmlFor="viewsVistasScore"
-            className="block text-xs text-gray-600 uppercase"
-          >
-            Exterior views of natural features that connect the interior to the outside environment (e.g., views to locally appropriate landscapes, window view of Central Park)
-          </label>
-          <input
-            type="range"
-            id="viewsVistasScore"
-            name="viewsVistasScore"
-            min={0}
-            max={3}
-            defaultValue={0}
-            list="values"
-            style={{
-              width: '300px',
-            }}
-          />
-            <datalist id="values" style={{
-            display: 'flex',
-            // flexDirection: 'column',
-            justifyContent: 'space-between',
-            // writingMode: 'vertical-lr',
-            width: '300px'
-          }}>
-            <option value="0" label="0"></option>
-            <option value="1" label="1"></option>
-            <option value="2" label="2"></option>
-            <option value="3" label="3"></option>
-          </datalist>
-        </div>
-        <div style={{ paddingTop: '20px' }}>
-          <label
-            htmlFor="waterScore"
-            className="block text-xs text-gray-600 uppercase"
-          >
-            Water access or view (e.g., water fountain, sink, or fish tank).
-          </label>
-          <input
-            type="range"
-            id="waterScore"
-            name="waterScore"
-            min={0}
-            defaultValue={0}
-            max={3}
-            list="values"
-            style={{
-              width: '300px',
-            }}
-          />
-          <datalist id="values" style={{
-            display: 'flex',
-            // flexDirection: 'column',
-            justifyContent: 'space-between',
-            // writingMode: 'vertical-lr',
-            width: '300px'
-          }}>
-            <option value="0" label="0"></option>
-            <option value="1" label="1"></option>
-            <option value="2" label="2"></option>
-            <option value="3" label="3"></option>
-          </datalist>
-        </div>
-
+        <CurrentPage
+          disabled={disabled}
+          initialValues={initialValues}
+        />
         {children}
+        <button
+          type="button"
+          disabled={currentPageNumber < 1}
+          onClick={handlePreviousPage}
+          className="cursor-pointer text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+          >
+            Previous Page
+          </button>
+        <button
+          type="button"
+          disabled={currentPageNumber >= 2}
+          onClick={handleNextPage}
+          className="cursor-pointer focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+          >
+            Next Page
+          </button>
       </form>
     );
   }
