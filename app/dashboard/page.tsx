@@ -1,18 +1,54 @@
 import { currentUser } from '@clerk/nextjs/server';
 import Link from 'next/link'
-import { getReports } from '../db';
+import { getReports, getUser, createUser } from '../db';
 import { redirect } from 'next/navigation';
 
-export default async function DashboardPage() {
-  const user = await currentUser();
-
-  if (!user) redirect('/sign-in')
+const fetchClerkUser = async () => {
+  const clerkUser = await currentUser();
+  if (!clerkUser) redirect('/sign-in')
   const {
     id,
-    firstName,
-  } = user
+    firstName = '',
+    lastName = '',
+    emailAddresses = [],
+  } = clerkUser
+  
+  try {
+    const emailAddress = emailAddresses[0].emailAddress
+    const user = await getUser(emailAddress)
 
-  const reports = await getReports(id);
+    if (user.length !== 0) {
+      const reports = await getReports(id)
+
+      return {
+        firstName,
+        reports
+      }
+    } else if (firstName && lastName && emailAddresses.length !== 0) {
+      const createdUser = await createUser({
+        email: emailAddress,
+        firstName,
+        lastName,
+        clerkId: id
+      })
+    }
+    console.log(user)
+  } catch (error) {
+    console.log(error)
+  }
+
+  return {
+    firstName,
+    reports: []
+  }
+}
+export default async function DashboardPage() {
+  const userData = await fetchClerkUser()
+
+  const {
+    firstName,
+    reports
+  } = userData
 
   return (
     <div className="flex h-screen bg-black">
