@@ -9,7 +9,6 @@ import { UsersTable, ReportsTable } from 'drizzle/schema';
 // Optionally, if not using email/pass login, you can
 // use the Drizzle adapter for Auth.js / NextAuth
 // https://authjs.dev/reference/adapter/drizzle
-import { currentUser } from '@clerk/nextjs/dist/types/server';
 import { currentUser } from '@clerk/nextjs/server';
 
 interface NewUserFormData {
