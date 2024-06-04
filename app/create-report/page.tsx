@@ -7,22 +7,21 @@ import { currentUser } from "@clerk/nextjs/server";
 export default function CreateReportPage() {
   async function submitReport(formData: FormData) {
     'use server';
-
     const user = await currentUser();
 
     if (user) {
-      const newReport = {
-        clerkUserId: user.id,
-        reportName: formData.get('reportName') as string,
-        airScore: parseInt(formData.get('airScore') as string, 10),
-        animalsScore: parseInt(formData.get('animalsScore') as string, 10),
-        fireScore: parseInt(formData.get('fireScore') as string, 10),
-        insideOutsideScore: parseInt(formData.get('insideOutsideScore') as string, 10),
-        naturaLightScore: parseInt(formData.get('naturaLightScore') as string, 10),
-        naturalMaterialsScore: parseInt(formData.get('naturalMaterialsScore') as string, 10),
-        plantsScore: parseInt(formData.get('plantsScore') as string, 10),
-        viewsVistasScore: parseInt(formData.get('viewsVistasScore') as string, 10),
-        waterScore: parseInt(formData.get('waterScore') as string, 10),
+      const newReport = {} as any
+      for (const keyValuePair of formData.entries()) {
+        const key = keyValuePair[0] as string
+        const value = keyValuePair[1] as string
+
+        if (value.length === 0) continue
+
+        if (key === 'reportName' || key === 'clerkUserId') {
+          newReport[key] = value
+        } else {
+          newReport[key] = parseInt(value, 10)
+        }
       }
 
       await createReport(newReport);
