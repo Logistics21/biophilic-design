@@ -26,11 +26,24 @@ export function CreateReportForm({
   } | undefined;
 }) {
     const [currentPageNumber, setCurrentPageNumber] = useState(0)
-    const handlePreviousPage = () => {
-      setCurrentPageNumber(currentPageNumber - 1)
+    const topOfPageRef = useRef<HTMLDivElement>(null)
+
+    const handlePreviousPage = (e: SyntheticEvent) => {
+      e.preventDefault()
+      e.stopPropagation()
+      if (topOfPageRef && topOfPageRef.current) {
+        topOfPageRef.current.scrollIntoView()
+      }
+
+      setCurrentPageNumber(currentPageNumber => currentPageNumber - 1)
     }
-    const handleNextPage = () => {
-      setCurrentPageNumber(currentPageNumber + 1)
+    const handleNextPage = (e: SyntheticEvent) => {
+      e.preventDefault()
+      e.stopPropagation()
+      if (topOfPageRef && topOfPageRef.current) {
+        topOfPageRef.current.scrollIntoView()
+      }
+      setCurrentPageNumber(currentPageNumber => currentPageNumber + 1)
     }
 
     return (
@@ -38,7 +51,7 @@ export function CreateReportForm({
         action={action}
         className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 sm:px-16"
       >
-        <div>
+        <div ref={topOfPageRef}>
           <label
             htmlFor="reportName"
             className="block text-xs text-gray-600 uppercase"
