@@ -2,32 +2,13 @@ import { CreateReportForm } from "./create-report-form";
 import { redirect } from "next/navigation";
 import { createReport } from "app/db";
 import { SubmitButton } from "app/submit-button";
-import { currentUser } from "@clerk/nextjs/server";
 
 export default function CreateReportPage() {
   async function submitReport(formData: FormData) {
     'use server';
 
-    const user = await currentUser();
-
-    if (user) {
-      const newReport = {
-        clerkUserId: user.id,
-        reportName: formData.get('reportName') as string,
-        airScore: parseInt(formData.get('airScore') as string, 10),
-        animalsScore: parseInt(formData.get('animalsScore') as string, 10),
-        fireScore: parseInt(formData.get('fireScore') as string, 10),
-        insideOutsideScore: parseInt(formData.get('insideOutsideScore') as string, 10),
-        naturaLightScore: parseInt(formData.get('naturaLightScore') as string, 10),
-        naturalMaterialsScore: parseInt(formData.get('naturalMaterialsScore') as string, 10),
-        plantsScore: parseInt(formData.get('plantsScore') as string, 10),
-        viewsVistasScore: parseInt(formData.get('viewsVistasScore') as string, 10),
-        waterScore: parseInt(formData.get('waterScore') as string, 10),
-      }
-
-      await createReport(newReport);
-      redirect('/dashboard');
-    }
+    await createReport(formData);
+    redirect('/dashboard');
   }
 
   return (

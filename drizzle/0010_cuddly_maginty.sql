@@ -1,0 +1,1 @@
+ALTER TABLE "reports" RENAME COLUMN "reportName" TO "report_name";
