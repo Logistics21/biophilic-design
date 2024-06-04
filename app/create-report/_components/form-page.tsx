@@ -2,19 +2,32 @@ import { formPageOneInputs } from "../_form-inputs/form-inputs"
 import { Field } from "./form-field";
 
 
-export function FormPageOne({
+export function FormPage({
     disabled,
-    initialValues
+    initialValues,
+    isCurrentPage,
+    formPageProps,
   }: {
     disabled: boolean,
     initialValues: {
       [key: string]: string
     } | undefined
+    isCurrentPage: boolean
+    formPageProps: {
+      title: string;
+      subtitle: string;
+      fields: {
+          formFieldId: string;
+          fieldName: string;
+          fieldText: string;
+      }[];
+  }
   }
   ) {
-    const { title, subtitle, fields } = formPageOneInputs;
+    // const { title, subtitle, fields } = formPageOneInputs;
+    const { title, subtitle, fields } = formPageProps;
     return (
-        <>
+        <div className={isCurrentPage ? '' : 'hidden'}>
           <h2>{title}</h2>
           <p>{subtitle}</p>
           {fields.map(({ formFieldId, fieldName, fieldText }) => (
@@ -27,6 +40,6 @@ export function FormPageOne({
               disabled={disabled}
             />
           ))}
-       </>
+       </div>
       )
 }
