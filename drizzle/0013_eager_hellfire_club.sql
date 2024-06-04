@@ -1,0 +1,19 @@
+ALTER TABLE "reports" ADD COLUMN "animal_motifs_score" integer NOT NULL;--> statement-breakpoint
+ALTER TABLE "reports" ADD COLUMN "area_of_emphasis_score" integer NOT NULL;--> statement-breakpoint
+ALTER TABLE "reports" ADD COLUMN "biomimicry_score" integer NOT NULL;--> statement-breakpoint
+ALTER TABLE "reports" ADD COLUMN "botanical_motifs_score" integer NOT NULL;--> statement-breakpoint
+ALTER TABLE "reports" ADD COLUMN "complementary_contrast_score" integer NOT NULL;--> statement-breakpoint
+ALTER TABLE "reports" ADD COLUMN "composition_balance_score" integer NOT NULL;--> statement-breakpoint
+ALTER TABLE "reports" ADD COLUMN "movement_score" integer NOT NULL;--> statement-breakpoint
+ALTER TABLE "reports" ADD COLUMN "nature_based_patterns_score" integer NOT NULL;--> statement-breakpoint
+ALTER TABLE "reports" ADD COLUMN "sensory_richness_score" integer NOT NULL;--> statement-breakpoint
+ALTER TABLE "reports" ADD COLUMN "spatial_variety_score" integer NOT NULL;--> statement-breakpoint
+ALTER TABLE "reports" ADD COLUMN "warm_light_score" integer NOT NULL;--> statement-breakpoint
+ALTER TABLE "reports" ADD COLUMN "cultural_connection_score" integer NOT NULL;--> statement-breakpoint
+ALTER TABLE "reports" ADD COLUMN "engagement_score" integer NOT NULL;--> statement-breakpoint
+ALTER TABLE "reports" ADD COLUMN "enticement_and_discovery_score" integer NOT NULL;--> statement-breakpoint
+ALTER TABLE "reports" ADD COLUMN "environmental_connection_score" integer NOT NULL;--> statement-breakpoint
+ALTER TABLE "reports" ADD COLUMN "historic_connection_score" integer NOT NULL;--> statement-breakpoint
+ALTER TABLE "reports" ADD COLUMN "prospect_and_refuge_score" integer NOT NULL;--> statement-breakpoint
+ALTER TABLE "reports" ADD COLUMN "spirit_of_place_score" integer NOT NULL;--> statement-breakpoint
+ALTER TABLE "reports" ADD COLUMN "stewardship_score" integer NOT NULL;

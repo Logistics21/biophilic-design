@@ -24,7 +24,6 @@ export function FormPage({
   }
   }
   ) {
-    // const { title, subtitle, fields } = formPageOneInputs;
     const { title, subtitle, fields } = formPageProps;
     return (
         <div className={isCurrentPage ? '' : 'hidden'}>

@@ -1,0 +1,294 @@
+{
+  "id": "4b242eef-85f4-4e6f-851b-1104a503c4d4",
+  "prevId": "b59195ac-1345-477f-9af1-30c04b263326",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "reports": {
+      "name": "reports",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "clerk_user_id": {
+          "name": "clerk_user_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "report_name": {
+          "name": "report_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "air_score": {
+          "name": "air_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "animals_score": {
+          "name": "animals_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fire_score": {
+          "name": "fire_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "inside_outside_score": {
+          "name": "inside_outside_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "natural_light_score": {
+          "name": "natural_light_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "natural_materials_score": {
+          "name": "natural_materials_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "plants_score": {
+          "name": "plants_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "views_vistas_score": {
+          "name": "views_vistas_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "water_score": {
+          "name": "water_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "animal_motifs_score": {
+          "name": "animal_motifs_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "area_of_emphasis_score": {
+          "name": "area_of_emphasis_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "biomimicry_score": {
+          "name": "biomimicry_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "botanical_motifs_score": {
+          "name": "botanical_motifs_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "complementary_contrast_score": {
+          "name": "complementary_contrast_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "composition_balance_score": {
+          "name": "composition_balance_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "movement_score": {
+          "name": "movement_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nature_based_patterns_score": {
+          "name": "nature_based_patterns_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sensory_richness_score": {
+          "name": "sensory_richness_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "spatial_variety_score": {
+          "name": "spatial_variety_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "warm_light_score": {
+          "name": "warm_light_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cultural_connection_score": {
+          "name": "cultural_connection_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "engagement_score": {
+          "name": "engagement_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "enticement_and_discovery_score": {
+          "name": "enticement_and_discovery_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "environmental_connection_score": {
+          "name": "environmental_connection_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "historic_connection_score": {
+          "name": "historic_connection_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "prospect_and_refuge_score": {
+          "name": "prospect_and_refuge_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "spirit_of_place_score": {
+          "name": "spirit_of_place_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "stewardship_score": {
+          "name": "stewardship_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "reports_clerk_user_id_users_clerk_id_fk": {
+          "name": "reports_clerk_user_id_users_clerk_id_fk",
+          "tableFrom": "reports",
+          "tableTo": "users",
+          "columnsFrom": [
+            "clerk_user_id"
+          ],
+          "columnsTo": [
+            "clerk_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "users": {
+      "name": "users",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "firstName": {
+          "name": "firstName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "lastName": {
+          "name": "lastName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "clerk_id": {
+          "name": "clerk_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "unique_idx": {
+          "name": "unique_idx",
+          "columns": [
+            "email"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "users_clerk_id_unique": {
+          "name": "users_clerk_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "clerk_id"
+          ]
+        }
+      }
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
