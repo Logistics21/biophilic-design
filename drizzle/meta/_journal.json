@@ -92,6 +92,13 @@
       "when": 1715621976668,
       "tag": "0012_living_korath",
       "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "5",
+      "when": 1716505880955,
+      "tag": "0013_eager_hellfire_club",
+      "breakpoints": true
     }
   ]
 }
