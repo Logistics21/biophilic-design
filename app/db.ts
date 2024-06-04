@@ -10,6 +10,7 @@ import { UsersTable, ReportsTable } from 'drizzle/schema';
 // use the Drizzle adapter for Auth.js / NextAuth
 // https://authjs.dev/reference/adapter/drizzle
 import { currentUser } from '@clerk/nextjs/dist/types/server';
+import { currentUser } from '@clerk/nextjs/server';
 
 interface NewUserFormData {
   email: string;
