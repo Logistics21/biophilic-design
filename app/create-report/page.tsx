@@ -2,31 +2,13 @@ import { CreateReportForm } from "./create-report-form";
 import { redirect } from "next/navigation";
 import { createReport } from "app/db";
 import { SubmitButton } from "app/submit-button";
-import { currentUser } from "@clerk/nextjs/server";
 
 export default function CreateReportPage() {
   async function submitReport(formData: FormData) {
     'use server';
-    const user = await currentUser();
 
-    if (user) {
-      const newReport = {} as any
-      for (const keyValuePair of formData.entries()) {
-        const key = keyValuePair[0] as string
-        const value = keyValuePair[1] as string
-
-        if (value.length === 0) continue
-
-        if (key === 'reportName' || key === 'clerkUserId') {
-          newReport[key] = value
-        } else {
-          newReport[key] = parseInt(value, 10)
-        }
-      }
-
-      await createReport(newReport);
-      redirect('/dashboard');
-    }
+    await createReport(formData);
+    redirect('/dashboard');
   }
 
   return (
