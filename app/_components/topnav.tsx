@@ -21,7 +21,11 @@ export async function TopNav() {
             height={32}
             alt="a green leaf with little bubbles"
           />
-          <h1>Biophilic Design</h1>
+          <Link
+            href='/'
+          >
+            <h1>Biophilic Design</h1>
+          </Link>
         </div>
         <div className="flex flex-row items-center gap-4 text-black">
           <Link
