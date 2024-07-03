@@ -51,28 +51,28 @@ export default async function DashboardPage() {
   } = userData
 
   return (
-    <div className="flex h-full bg-white">
-      <div className="w-screen h-screen flex flex-col space-y-5 p-5 justify-start items-start text-black">
-        <h1 className="text-black text-3xl">Welcome {firstName}</h1>
-        <h3>Spaces you&apos;ve evaluated:</h3>
+    <div className="flex h-full bg-white items-center">
+      <div className="w-4/5 h-screen flex flex-col space-y-5 p-5 my-10 mx-auto justify-start items-start text-black">
+        <h1 className="text-4xl">Welcome {firstName}</h1>
+        <h3 className='text-2xl'>Spaces you&apos;ve evaluated:</h3>
         {reports.length === 0 ? (
           <div className='ml-5'>
             <p>Looks like you haven&apos;t evaluated any of your spaces yet. Get started by creating a new report</p>
           </div>
         ): (
-          <ul>
+          <ul className='my-5'>
           {reports.map((report) => {
             return (
               <li
                 key={report.id}
-                className='ml-5'
+                className="py-1"
               >
                 <Link
                   href={{
                     pathname: `/view-report/${report.id}`,
                     query: report
                   }}
-                  className="text-black px-5 py-2.5 underline hover:text-green-700 transition-all"
+                  className="underline hover:text-green-700 transition-all"
                 >
                   {report.reportName}
                 </Link>

@@ -14,12 +14,13 @@ export const Field = ({
     disabled,
   }: FieldProps) => {
     return (
-      <div style={{ paddingTop: '20px' }}>
+      <div className="pt-5">
         <label
           htmlFor={formFieldId}
-          className="block text-xs text-gray-600 uppercase"
+          className="block text-md whitespace-pre-line"
         >
-          {`${fieldName}: ${fieldText}`}
+          <p>{`${fieldName}:`}</p>
+          <p className="py-2 pb-4">{`${fieldText}`}</p>
         </label>
         <input
           type="range"

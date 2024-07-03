@@ -5,7 +5,7 @@ import './globals.css';
 import { GeistSans } from 'geist/font/sans';
 import { TopNav } from './_components/topnav';
 
-let title = 'Biophilic Assessments for your spaces';
+let title = 'Biophilic assessments for your spaces';
 let description =
   'This is a site for assessing the biophilic properties of your work and living spaces.';
 

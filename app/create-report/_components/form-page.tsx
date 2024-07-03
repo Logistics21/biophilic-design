@@ -27,8 +27,8 @@ export function FormPage({
     const { title, subtitle, fields } = formPageProps;
     return (
         <div className={isCurrentPage ? '' : 'hidden'}>
-          <h2>{title}</h2>
-          <p>{subtitle}</p>
+          <h2 className="text-2xl">{title}</h2>
+          <p className="my-2">{subtitle}</p>
           {fields.map(({ formFieldId, fieldName, fieldText }) => (
             <Field
               key={formFieldId}

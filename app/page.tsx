@@ -13,7 +13,7 @@ export default async function Page() {
             alt="open plan office with plants and ivy on columns"
             sizes='100vw'
           />
-          <h1 className="text-black text-4xl">
+          <h1 className="text-black text-4xl w-1/3">
             A design tool to help you evaluate and improve your living spaces based on scientific research.
           </h1>
         </div>
