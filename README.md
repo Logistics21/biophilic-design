@@ -14,17 +14,38 @@ git clone https://github.com/biophilic-design/biophilic-design.git
 
 First, make sure your terminal is pointing to the local folder/directory (i.e. your-computer/biophilic-design). Depending on whether you use npm, yarn or pnpm, run the development server by entering the following command:
 
-npm:
+### npm:
+
+install:
+```bash
+npm install
+```
+
+run:
 ```bash
 npm run dev
 ```
 
-yarn:
+### yarn:
+
+install:
+```bash
+yarn
+```
+
+run:
 ```bash
 yarn dev
 ```
 
-pnpm
+### pnpm
+
+install:
+```bash
+pnpm i
+```
+
+run:
 ```bash
 pnpm dev
 ```
