@@ -7,13 +7,24 @@ This app was made using the JavaScript library [Next.js](https://nextjs.org/). I
 You can clone & create this repo with the following command
 
 ```bash
-npx create-next-app nextjs-typescript-starter --example "https://github.com/vercel/nextjs-postgres-auth-starter"
+git clone https://github.com/biophilic-design/biophilic-design.git
 ```
 
 ## Getting Started
 
-First, make sure your terminal is pointing to the local folder/directory (i.e. your-computer/biophilic-design) and run the development server by entering the following command:
+First, make sure your terminal is pointing to the local folder/directory (i.e. your-computer/biophilic-design). Depending on whether you use npm, yarn or pnpm, run the development server by entering the following command:
 
+npm:
+```bash
+npm run dev
+```
+
+yarn:
+```bash
+yarn dev
+```
+
+pnpm
 ```bash
 pnpm dev
 ```
